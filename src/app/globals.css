@@ -3,51 +3,145 @@
 @tailwind utilities;
 
 :root {
-  --majiai: #d6145e;
-  --background: #f9fafb;
-  --foreground: #1f2937;
+  --color-primary: #0d6ca7;
+  --color-primary-dark: #223a49;
+  --color-primary-light: #3a8fca;
+  --color-surface: #ffffff;
+  --color-page: #f8fafb;
+  --color-txt: #1a2332;
+  --color-txt-sub: #5a6b7d;
+  --color-txt-dim: #8a96a5;
+  --color-bd: #e2e8f0;
+  --color-bd-light: #f1f5f9;
+  --color-green: #1b7a5a;
+  --color-green-bg: #1b7a5a12;
+  --color-amber: #92650a;
+  --color-amber-bg: #92650a12;
+  --color-red: #b91c1c;
+  --color-red-bg: #b91c1c0f;
+  --radius-card: 8px;
+  --radius-section: 12px;
+  --radius-hero: 16px;
+  --spacing-sidebar: 288px;
+  --spacing-header: 56px;
+  --shadow-hover: 0 2px 4px #1a23320d, 0 8px 20px #1a233214;
 }
 
 html,
-body,
-#__next {
-  height: 100%;
+body {
+  min-height: 100%;
 }
 
-@supports (height: 100dvh) {
+@supports (min-height: 100dvh) {
   html,
-  body,
-  #__next {
-    height: 100dvh;
+  body {
+    min-height: 100dvh;
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
-}
-
-@media screen and (min-width: 431px) {
-  html {
-    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-    min-height: 100vh;
-  }
-
-  body {
-    background: transparent;
-  }
-}
-
-@media screen and (max-width: 430px) {
-  html {
-    background: #f9fafb;
-  }
+  color: var(--color-txt);
+  background: var(--color-page);
+  font-family: Inter, "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .bg-page {
+    background-color: var(--color-page);
   }
+  .bg-surface {
+    background-color: var(--color-surface);
+  }
+  .border-bd {
+    border-color: var(--color-bd);
+  }
+  .text-txt {
+    color: var(--color-txt);
+  }
+  .text-txt-sub {
+    color: var(--color-txt-sub);
+  }
+  .text-txt-dim {
+    color: var(--color-txt-dim);
+  }
+  .text-primary {
+    color: var(--color-primary);
+  }
+  .text-red {
+    color: var(--color-red);
+  }
+  .bg-red-bg {
+    background-color: var(--color-red-bg);
+  }
+  .bg-primary\/10 {
+    background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+  .bg-gradient-brand {
+    background-image: linear-gradient(
+      135deg,
+      var(--color-primary-dark),
+      var(--color-primary)
+    );
+  }
+  .rounded-card {
+    border-radius: var(--radius-card);
+  }
+  .rounded-section {
+    border-radius: var(--radius-section);
+  }
+  .rounded-hero {
+    border-radius: var(--radius-hero);
+  }
+  .shadow-hover {
+    box-shadow: var(--shadow-hover);
+  }
+  .w-sidebar {
+    width: var(--spacing-sidebar);
+  }
+  .lg\:pl-sidebar {
+    @media (min-width: 1024px) {
+      padding-left: var(--spacing-sidebar);
+    }
+  }
+  .text-ui-xs {
+    font-size: 0.625rem;
+    line-height: 1rem;
+  }
+  .text-ui-sm {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+  .text-ui-base {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+  .text-ui-lg {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .text-ui-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+.prose-portal h1 {
+  @apply mb-4 text-ui-xl font-bold text-txt;
+}
+
+.prose-portal h2 {
+  @apply mb-3 mt-6 text-ui-lg font-bold text-txt;
+}
+
+.prose-portal p {
+  @apply mb-3 text-ui-base leading-relaxed text-txt-sub;
+}
+
+.prose-portal ul {
+  @apply mb-3 list-disc space-y-1 pl-5 text-ui-base text-txt-sub;
+}
+
+.prose-portal a {
+  @apply text-primary underline;
 }

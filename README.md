@@ -1,83 +1,76 @@
-# 本気AIドリル クローン
+# AI-Driven School 受講生ポータル（クローン）
 
-[本気AIドリル](https://drill.ma-ji.ai/) と同じUI・機能を持つ学習プラットフォームのクローン実装です。
+[AI-Driven School 受講生ポータル](https://ai-driven-school-portal.com/) の Phase 1 実装です。
 
-## 機能
+## 機能（Phase 1）
 
-- **認証**: ログイン、新規登録、パスワードリセット
-- **学習**: シリーズ → コース → レッスン → クイズの階層構造
-- **ゲーミフィケーション**: XP、ストリーク、進捗バー
-- **ソーシャル**: フレンド追加、フレンドランキング
-- **プロフィール**: アイコン選択、フレンドコード
+- **認証**: Auth.js v5 + Resend マジックリンク
+- **開発用ログイン**: 登録済みメールでワンクリックログイン（開発環境のみ）
+- **ダッシュボード**: スケジュール・やるべきことの概要
+- **スケジュール**: 講義・GS・提出期限一覧
+- **課題**: 月次課題一覧
+- **コンテンツページ**: `/pages/*` ガイド・課題ページ（10ページ）
+- **設定**: アカウント情報表示
 
 ## 技術スタック
 
-- **フロントエンド**: Next.js 14 (App Router) + TypeScript + Tailwind CSS
-- **バックエンド**: Supabase (認証 + PostgreSQL)
-- **デプロイ**: Vercel 対応
+- Next.js 14 (App Router) + TypeScript
+- Auth.js v5 + Resend
+- Prisma + SQLite（開発）/ PostgreSQL（本番想定）
+- Tailwind CSS
 
 ## セットアップ
 
 ```bash
 npm install
-cp .env.example .env.local
+cp .env.example .env
+npx prisma db push
+npm run db:seed
 npm run dev
 ```
 
-### デモモード
+ブラウザで http://localhost:3000 を開きます。
 
-Supabase の環境変数を設定しない場合、**デモモード**で動作します。
-任意のメールアドレスとパスワード（6文字以上）でログインでき、進捗は localStorage に保存されます。
+### 開発用ログイン
 
-### Supabase 連携（本番用）
+`npm run dev` 中は `/login` 画面下部の **開発用ログイン** ボタンからログインできます。
 
-1. [Supabase](https://supabase.com) でプロジェクトを作成
-2. `supabase/schema.sql` を SQL Editor で実行
-3. `.env.local` に以下を設定:
+| メール | 用途 |
+|---|---|
+| `dev-fri@example.com` | 金曜クラス開発ユーザー |
+| `dev-sat@example.com` | 土曜クラス開発ユーザー |
 
-```
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-```
+本番メールは `prisma/seed.ts` に追加して `npm run db:seed` を実行してください。
 
-## デプロイ
+### 本番認証（Resend）
 
-詳細は [DEPLOY.md](./DEPLOY.md) を参照してください。
+`.env` に以下を設定:
 
-### クイックデプロイ（Vercel）
-
-1. [vercel.com](https://vercel.com) で GitHub リポジトリをインポート
-2. Deploy をクリック（環境変数は任意）
-
-```bash
-# または CLI から
-npm install -g vercel && vercel login && vercel --prod
+```env
+AUTH_SECRET=長いランダム文字列
+AUTH_URL=https://your-domain.com
+AUTH_RESEND_KEY=re_xxxx
+AUTH_RESEND_FROM=noreply@your-domain.com
+DATABASE_URL=postgresql://...
 ```
 
 ## ページ構成
 
 | パス | 説明 |
-|------|------|
-| `/login` | ログイン |
-| `/signup` | 新規登録 |
-| `/forgot-password` | パスワードリセット |
-| `/home` | ホーム（シリーズ一覧） |
-| `/series/[id]` | シリーズ詳細（コース・レッスン） |
-| `/drill` | クイズ画面 |
-| `/lesson-complete` | レッスン完了 |
-| `/friends` | フレンド一覧 |
-| `/add-friend` | フレンド追加 |
-| `/ranking` | フレンドランキング |
-| `/profile` | プロフィール |
+|---|---|
+| `/login` | マジックリンクログイン |
+| `/` | ダッシュボード |
+| `/schedule` | スケジュール |
+| `/tasks` | 月次課題 |
 | `/settings` | 設定 |
+| `/pages/[slug]` | コンテンツページ |
 
-## 学習コンテンツ
+## Phase 2 予定
 
-`src/lib/content/` にシリーズ・コース・レッスン・クイズデータを定義しています。
-
-- Git入門（2コース、4レッスン）
-- AI基礎（2コース、3レッスン）
-- プログラミング入門（1コース、2レッスン）
+- 残り28コンテンツページの追加
+- Mux 動画プレイヤー
+- カレンダー連携（Google Calendar）
+- 進捗トラッキング
 
 ## ライセンス
 

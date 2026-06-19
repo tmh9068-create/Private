@@ -1,21 +1,12 @@
-import type { Metadata, Viewport } from "next";
-import { AuthProvider } from "@/contexts/AuthContext";
-import { ProgressProvider } from "@/contexts/ProgressContext";
+import type { Metadata } from "next";
+import { SessionProvider } from "@/components/providers/SessionProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "本気AIドリル",
-  description: "AIとプログラミングをゲーム感覚で学ぼう",
+  title: "AI-Driven School | 受講生ポータル",
+  description: "AI-Driven School 受講生向けポータルサイト",
   manifest: "/manifest.json",
   robots: "noindex, nofollow",
-};
-
-export const viewport: Viewport = {
-  themeColor: "#1a1a2e",
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
 
 export default function RootLayout({
@@ -24,16 +15,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" translate="no">
+    <html lang="ja">
       <head>
-        <meta name="google" content="notranslate" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
-      <body>
-        <AuthProvider>
-          <ProgressProvider>{children}</ProgressProvider>
-        </AuthProvider>
+      <body className="antialiased">
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );
