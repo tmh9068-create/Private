@@ -101,13 +101,32 @@ MUX_PLAYBACK_IDS=, , , XP8bQlNaacRPgGCgB9CXlgvWnDaMiqgzzGqnNFXyBAU
 
 ## 5. デプロイ後の初期設定
 
-`prisma/seed.ts` に受講生のメールアドレスを追加してから:
+`prisma/seed.ts` に受講生のメールアドレスを追加するか、環境変数 `SEED_EMAILS` で指定:
 
-```bash
-DATABASE_URL="postgresql://..." npm run db:seed
+```json
+[
+  {
+    "email": "student@example.com",
+    "name": "受講生太郎",
+    "classKey": "fri",
+    "team": "bat",
+    "term": 1,
+    "cohortId": "t1-fri",
+    "cohortName": "金曜クラス"
+  }
+]
 ```
 
-環境変数 `SEED_EMAILS`（JSON 配列）でも追加可能です。詳細は `prisma/seed.ts` を参照。
+### ローカル / CLI
+
+```bash
+DATABASE_URL="postgresql://..." npm run bootstrap:production
+```
+
+### GitHub Actions（手動）
+
+GitHub Secrets に `DATABASE_URL` と `SEED_EMAILS`（JSON 配列）を設定後、  
+**Actions → Seed Database → Run workflow** を実行。
 
 ---
 

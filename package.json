@@ -12,6 +12,7 @@
     "db:migrate": "prisma migrate deploy",
     "db:seed": "tsx prisma/seed.ts",
     "setup": "bash scripts/setup.sh",
+    "bootstrap:production": "bash scripts/bootstrap-production.sh",
     "postinstall": "prisma generate"
   },
   "prisma": {
