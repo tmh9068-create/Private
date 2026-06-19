@@ -145,3 +145,78 @@ body {
 .prose-portal a {
   @apply text-primary underline;
 }
+
+.article h2 {
+  @apply mb-3 mt-8 text-ui-lg font-bold text-txt;
+}
+
+.article h3 {
+  @apply mb-2 mt-6 text-ui-base font-bold text-txt;
+}
+
+.article p {
+  @apply mb-3 text-ui-base leading-relaxed text-txt-sub;
+}
+
+.article ul,
+.article ol {
+  @apply mb-4 space-y-2 pl-5 text-ui-base text-txt-sub;
+}
+
+.article ul {
+  @apply list-disc;
+}
+
+.article ol {
+  @apply list-decimal;
+}
+
+.article hr {
+  @apply my-8 border-bd;
+}
+
+.article .table-wrapper {
+  @apply mb-4 overflow-x-auto rounded-card border border-bd;
+}
+
+.article table {
+  @apply w-full text-ui-sm;
+}
+
+.article th,
+.article td {
+  @apply border-b border-bd px-3 py-2 text-left;
+}
+
+.article th {
+  @apply bg-page font-semibold text-txt;
+}
+
+.article .callout {
+  @apply my-4 rounded-card border px-4 py-3 text-ui-sm;
+}
+
+.article .callout.info {
+  @apply border-blue-200 bg-blue-50 text-blue-900;
+}
+
+.article .callout.warning {
+  @apply border-amber-200 bg-amber-50 text-amber-900;
+}
+
+.article .image-placeholder {
+  @apply rounded-card bg-page px-4 py-8 text-center text-ui-sm text-txt-dim;
+}
+
+.article .link-card {
+  @apply my-3 flex items-center gap-3 rounded-card border border-bd bg-surface px-4 py-3 no-underline text-txt transition hover:border-primary/30;
+}
+
+.article .list-box {
+  @apply list-none space-y-2 pl-0;
+}
+
+.article .list-box li {
+  @apply rounded-card border border-bd bg-page px-4 py-3;
+}
+

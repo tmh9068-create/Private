@@ -1,5 +1,7 @@
 import { scheduleEvents } from "@/lib/navigation";
-import { Check, CalendarPlus } from "lucide-react";
+import { Check, CalendarPlus, ExternalLink } from "lucide-react";
+
+const calendarEmbedUrl = process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_EMBED_URL;
 
 export default function SchedulePage() {
   return (
@@ -11,7 +13,30 @@ export default function SchedulePage() {
         </p>
       </header>
 
-      <div className="rounded-section border border-bd bg-surface p-5 shadow-hover">
+      {calendarEmbedUrl && (
+        <section className="overflow-hidden rounded-section border border-bd bg-surface shadow-hover">
+          <div className="flex items-center justify-between border-b border-bd px-5 py-3">
+            <h2 className="text-ui-lg font-bold text-txt">Googleカレンダー</h2>
+            <a
+              href={calendarEmbedUrl.replace("/embed?", "/render?")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-ui-sm text-primary"
+            >
+              新しいタブで開く
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          </div>
+          <iframe
+            src={calendarEmbedUrl}
+            className="h-[480px] w-full border-0"
+            title="AI-Driven School スケジュール"
+          />
+        </section>
+      )}
+
+      <section className="rounded-section border border-bd bg-surface p-5 shadow-hover">
+        <h2 className="mb-4 text-ui-lg font-bold text-txt">イベント一覧</h2>
         <ul className="space-y-2">
           {scheduleEvents.map((event) => (
             <li
@@ -32,7 +57,7 @@ export default function SchedulePage() {
             </li>
           ))}
         </ul>
-      </div>
+      </section>
     </div>
   );
 }

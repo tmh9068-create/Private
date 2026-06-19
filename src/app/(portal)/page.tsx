@@ -2,11 +2,15 @@ import Link from "next/link";
 import { Check, CalendarPlus } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { dashboardQuickLinks, scheduleEvents } from "@/lib/navigation";
+import { getProgressStats } from "@/lib/progress";
 
 export default async function DashboardPage() {
   const session = await auth();
   const upcoming = scheduleEvents.filter((event) => !event.done).slice(0, 5);
   const completed = scheduleEvents.filter((event) => event.done).slice(-5);
+  const stats = session?.user?.id
+    ? await getProgressStats(session.user.id)
+    : { completed: 0, total: 0 };
 
   return (
     <div className="space-y-8">
@@ -14,6 +18,11 @@ export default async function DashboardPage() {
         <h1 className="text-ui-xl font-bold text-txt">ダッシュボード</h1>
         <p className="mt-1 text-ui-base text-txt-sub">
           {session?.user?.name}さん、おかえりなさい。
+          {stats.completed > 0 && (
+            <span className="ml-2 text-primary">
+              ページ完了 {stats.completed} 件
+            </span>
+          )}
         </p>
       </header>
 

@@ -64,14 +64,26 @@ model AllowedEmail {
 }
 
 model Student {
-  id             String  @id @default(cuid())
-  userId         String  @unique
-  user           User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  classKey       String  @default("fri")
+  id             String         @id @default(cuid())
+  userId         String         @unique
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  classKey       String         @default("fri")
   team           String?
-  term           Int     @default(1)
-  role           String  @default("student")
+  term           Int            @default(1)
+  role           String         @default("student")
   cohortId       String?
   cohortName     String?
   secondaryEmail String?
+  pageProgress   PageProgress[]
+}
+
+model PageProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  pageSlug  String
+  completed Boolean  @default(false)
+  updatedAt DateTime @updatedAt
+  student   Student  @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+  @@unique([userId, pageSlug])
 }
