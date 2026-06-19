@@ -1,6 +1,25 @@
 # デプロイ手順
 
-## 方法1: Vercel（推奨・本番用）
+## 方法1: GitHub Pages（無料・恒久的）
+
+`gh-pages` ブランチへのデプロイは **完了済み** です。あと1ステップで公開されます。
+
+### 公開手順（1分）
+
+1. リポジトリの **Settings → Pages** を開く  
+   https://github.com/tmh9068-create/Private/settings/pages
+2. **Build and deployment** で以下を設定:
+   - Source: **Deploy from a branch**
+   - Branch: **gh-pages** / **/ (root)**
+3. **Save** をクリック
+
+数分後、以下のURLでアクセスできます:
+
+**https://tmh9068-create.github.io/Private/**
+
+`main` ブランチへの push で GitHub Actions が自動的に `gh-pages` を更新します。
+
+## 方法2: Vercel（推奨・本番用）
 
 オリジナルサイト（drill.ma-ji.ai）と同じ Vercel でのホスティングです。
 
