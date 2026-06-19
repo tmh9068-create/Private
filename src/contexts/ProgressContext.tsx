@@ -75,14 +75,14 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       .from("drill_device_progress")
       .select("*")
       .eq("user_id", user.id)
-      .single();
+      .maybeSingle();
 
     const { data: completions } = await supabase
       .from("drill_lesson_completions")
       .select("lesson_id")
       .eq("user_id", user.id);
 
-    const { data: stats } = await supabase.rpc("get_user_stats", {
+    const { data: stats } = await supabase.rpc("drill_get_user_stats", {
       p_user_id: user.id,
     });
 
@@ -90,7 +90,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       completedLessonIds: completions?.map((c) => c.lesson_id) ?? [],
       currentCourseId: deviceProgress?.current_course_id ?? null,
       currentLessonIndex: deviceProgress?.current_lesson_index ?? 0,
-      streak: deviceProgress?.streak ?? 0,
+      streak: stats?.current_streak ?? deviceProgress?.streak ?? 0,
       totalXp: stats?.total_xp ?? 0,
     });
     setLoading(false);
@@ -125,10 +125,16 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         return;
       }
 
-      await supabase.rpc("complete_lesson", {
+      const { error } = await supabase.rpc("drill_complete_lesson", {
         p_lesson_id: lessonId,
         p_course_id: courseId,
       });
+
+      if (error) {
+        console.error("completeLesson failed:", error.message);
+        return;
+      }
+
       await refresh();
     },
     [user, isDemo, supabase, refresh]

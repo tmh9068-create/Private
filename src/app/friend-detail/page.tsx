@@ -1,23 +1,86 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft, Flame, Star } from "lucide-react";
 import { MobileLayout } from "@/components/layout/MobileLayout";
+import { createClient } from "@/lib/supabase/client";
+
+interface FriendStats {
+  display_name: string;
+  friend_code: string;
+  streak: number;
+  total_xp: number;
+  lessons_completed: number;
+}
 
 function FriendDetailContent() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
+  const [friend, setFriend] = useState<FriendStats | null>(null);
+  const [loading, setLoading] = useState(true);
+  const supabase = createClient();
 
-  const friend = {
-    id: id || "friend-1",
-    display_name: id === "friend-2" ? "マスター" : "マジくん",
-    friend_code: id === "friend-2" ? "MSTR01" : "MAJI01",
-    streak: id === "friend-2" ? 14 : 7,
-    total_xp: id === "friend-2" ? 320 : 150,
-    lessons_completed: id === "friend-2" ? 12 : 5,
-  };
+  useEffect(() => {
+    const load = async () => {
+      if (!id || !supabase) {
+        setLoading(false);
+        return;
+      }
+
+      const { data: profile } = await supabase
+        .from("drill_user_profiles")
+        .select("display_name, friend_code")
+        .eq("id", id)
+        .single();
+
+      const { data: stats } = await supabase.rpc("drill_get_user_stats", {
+        p_user_id: id,
+      });
+
+      const { data: progress } = await supabase
+        .from("drill_device_progress")
+        .select("streak")
+        .eq("user_id", id)
+        .maybeSingle();
+
+      if (profile) {
+        setFriend({
+          display_name: profile.display_name || "ユーザー",
+          friend_code: profile.friend_code,
+          streak: stats?.current_streak ?? progress?.streak ?? 0,
+          total_xp: stats?.total_xp ?? 0,
+          lessons_completed: stats?.lessons_completed ?? 0,
+        });
+      }
+      setLoading(false);
+    };
+
+    load();
+  }, [id, supabase]);
+
+  if (loading) {
+    return (
+      <MobileLayout>
+        <div className="px-4 pt-4 pb-8 text-center text-gray-400">読み込み中...</div>
+      </MobileLayout>
+    );
+  }
+
+  if (!friend) {
+    return (
+      <MobileLayout>
+        <div className="px-4 pt-4 pb-8">
+          <Link href="/friends" className="flex items-center text-gray-500 mb-4 -ml-1">
+            <ChevronLeft size={20} />
+            <span className="text-sm">戻る</span>
+          </Link>
+          <p className="text-center text-gray-500">ユーザーが見つかりませんでした</p>
+        </div>
+      </MobileLayout>
+    );
+  }
 
   return (
     <MobileLayout>

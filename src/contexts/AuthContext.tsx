@@ -23,6 +23,9 @@ interface AuthContextValue {
   resetPassword: (email: string) => Promise<{ error: Error | null }>;
   updatePassword: (password: string) => Promise<{ error: Error | null }>;
   refreshProfile: () => Promise<void>;
+  updateProfile: (
+    updates: Partial<Pick<UserProfile, "display_name" | "avatar_icon" | "friend_ranking_opt_in">>
+  ) => Promise<{ error: Error | null }>;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -59,6 +62,48 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const supabase = useMemo(() => createClient(), []);
 
+  const ensureProfile = useCallback(
+    async (currentUser: User) => {
+      if (!supabase) return null;
+
+      const { data: existing } = await supabase
+        .from("drill_user_profiles")
+        .select("*")
+        .eq("id", currentUser.id)
+        .maybeSingle();
+
+      if (existing) return existing as UserProfile;
+
+      const displayName =
+        currentUser.user_metadata?.display_name ||
+        split_part(currentUser.email || "user", "@", 1);
+
+      const { data: created, error } = await supabase
+        .from("drill_user_profiles")
+        .insert({
+          id: currentUser.id,
+          display_name: displayName,
+        })
+        .select("*")
+        .single();
+
+      if (!error && created) return created as UserProfile;
+
+      await supabase
+        .from("drill_device_progress")
+        .upsert({ user_id: currentUser.id }, { onConflict: "user_id" });
+
+      const { data: retry } = await supabase
+        .from("drill_user_profiles")
+        .select("*")
+        .eq("id", currentUser.id)
+        .single();
+
+      return (retry as UserProfile) ?? null;
+    },
+    [supabase]
+  );
+
   const refreshProfile = useCallback(async () => {
     if (!user) {
       setProfile(null);
@@ -70,16 +115,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    const { data } = await supabase
-      .from("user_profiles")
-      .select("*")
-      .eq("id", user.id)
-      .single();
-
-    if (data) {
-      setProfile(data as UserProfile);
-    }
-  }, [user, isDemo, supabase]);
+    const data = await ensureProfile(user);
+    if (data) setProfile(data);
+  }, [user, isDemo, supabase, ensureProfile]);
 
   useEffect(() => {
     const init = async () => {
@@ -199,6 +237,30 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     [supabase]
   );
 
+  const updateProfile = useCallback(
+    async (
+      updates: Partial<
+        Pick<UserProfile, "display_name" | "avatar_icon" | "friend_ranking_opt_in">
+      >
+    ) => {
+      if (!user) return { error: new Error("ログインが必要です") };
+
+      if (isDemo || !supabase) {
+        setProfile((prev) => (prev ? { ...prev, ...updates } : prev));
+        return { error: null };
+      }
+
+      const { error } = await supabase
+        .from("drill_user_profiles")
+        .update({ ...updates, updated_at: new Date().toISOString() })
+        .eq("id", user.id);
+
+      if (!error) await refreshProfile();
+      return { error: error ? new Error(error.message) : null };
+    },
+    [user, isDemo, supabase, refreshProfile]
+  );
+
   return (
     <AuthContext.Provider
       value={{
@@ -212,11 +274,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         resetPassword,
         updatePassword,
         refreshProfile,
+        updateProfile,
       }}
     >
       {children}
     </AuthContext.Provider>
   );
+}
+
+function split_part(value: string, delimiter: string, index: number): string {
+  const parts = value.split(delimiter);
+  return parts[index - 1] ?? value;
 }
 
 export function useAuth() {

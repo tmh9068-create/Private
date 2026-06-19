@@ -26,6 +26,9 @@ jobs:
         run: npm ci
 
       - name: Build static site
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: https://ezovbitgnocuyqlewuxg.supabase.co
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6b3ZiaXRnbm9jdXlxbGV3dXhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyOTY2ODQsImV4cCI6MjA5MDg3MjY4NH0.OxJ2CSpUxvw_0Obdu3l6I7LBgAeYGG_y0pkwb-pi8gI
         run: npm run build:pages
 
       - name: Add .nojekyll

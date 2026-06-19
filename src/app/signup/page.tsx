@@ -16,6 +16,7 @@ export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const { signUp } = useAuth();
   const router = useRouter();
@@ -43,7 +44,10 @@ export default function SignupPage() {
       return;
     }
 
-    router.push("/home");
+    setSuccess(
+      "登録しました。確認メールをご確認のうえ、ログインしてください。"
+    );
+    setTimeout(() => router.push("/login"), 2500);
   };
 
   return (
@@ -124,6 +128,10 @@ export default function SignupPage() {
 
           {error && (
             <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
+          )}
+
+          {success && (
+            <p className="text-green-600 text-sm mb-4 text-center">{success}</p>
           )}
 
           <Button type="submit" loading={loading}>

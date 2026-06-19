@@ -6,35 +6,80 @@ import { ChevronLeft, Search, UserPlus } from "lucide-react";
 import { MobileLayout } from "@/components/layout/MobileLayout";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
+import { createClient } from "@/lib/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
 
-const DEMO_USERS = [
-  { id: "u1", display_name: "サプライズ太郎", friend_code: "SPR001" },
-  { id: "u2", display_name: "AI学習者", friend_code: "AI0001" },
-];
+interface SearchResult {
+  id: string;
+  display_name: string;
+  friend_code: string;
+  avatar_icon: string;
+}
 
 export default function AddFriendPage() {
+  const { user } = useAuth();
   const [code, setCode] = useState("");
-  const [searchResult, setSearchResult] = useState<
-    (typeof DEMO_USERS)[0] | null
-  >(null);
+  const [searchResult, setSearchResult] = useState<SearchResult | null>(null);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
+  const [searching, setSearching] = useState(false);
+  const [sending, setSending] = useState(false);
+  const supabase = createClient();
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     setError("");
     setSent(false);
-    const found = DEMO_USERS.find(
-      (u) => u.friend_code.toUpperCase() === code.trim().toUpperCase()
+    setSearchResult(null);
+
+    if (!code.trim()) {
+      setError("フレンドコードを入力してください");
+      return;
+    }
+
+    if (!supabase || !user) {
+      setError("ログインが必要です");
+      return;
+    }
+
+    setSearching(true);
+    const { data, error: rpcError } = await supabase.rpc(
+      "drill_search_user_by_code",
+      { p_code: code.trim() }
     );
+    setSearching(false);
+
+    if (rpcError) {
+      setError("検索に失敗しました");
+      return;
+    }
+
+    const found = data?.[0] as SearchResult | undefined;
     if (found) {
-      setSearchResult(found);
+      setSearchResult({
+        ...found,
+        display_name: found.display_name || "ユーザー",
+      });
     } else {
-      setSearchResult(null);
       setError("ユーザーが見つかりませんでした");
     }
   };
 
-  const handleSendRequest = () => {
+  const handleSendRequest = async () => {
+    if (!searchResult || !supabase) return;
+
+    setSending(true);
+    const { error: rpcError } = await supabase.rpc("drill_send_friend_request", {
+      p_to_user_id: searchResult.id,
+    });
+    setSending(false);
+
+    if (rpcError) {
+      setError(rpcError.message.includes("yourself")
+        ? "自分自身は追加できません"
+        : "申請の送信に失敗しました");
+      return;
+    }
+
     setSent(true);
   };
 
@@ -60,7 +105,7 @@ export default function AddFriendPage() {
           <div className="flex-1">
             <Input
               label=""
-              placeholder="フレンドコード（例: DEMO01）"
+              placeholder="フレンドコード（例: ABC123）"
               value={code}
               onChange={(e) => setCode(e.target.value.toUpperCase())}
               icon={<Search size={18} />}
@@ -68,8 +113,8 @@ export default function AddFriendPage() {
           </div>
         </div>
 
-        <Button onClick={handleSearch} className="mb-6">
-          検索
+        <Button onClick={handleSearch} className="mb-6" disabled={searching}>
+          {searching ? "検索中..." : "検索"}
         </Button>
 
         {error && (
@@ -91,10 +136,10 @@ export default function AddFriendPage() {
                 </p>
               </div>
             </div>
-            <Button onClick={handleSendRequest}>
+            <Button onClick={handleSendRequest} disabled={sending}>
               <span className="flex items-center gap-2">
                 <UserPlus size={18} />
-                フレンド申請を送る
+                {sending ? "送信中..." : "フレンド申請を送る"}
               </span>
             </Button>
           </div>

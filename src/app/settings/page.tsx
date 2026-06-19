@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { MobileLayout } from "@/components/layout/MobileLayout";
@@ -10,14 +10,31 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";
 
 export default function SettingsPage() {
-  const { profile, signOut, refreshProfile } = useAuth();
-  const [displayName, setDisplayName] = useState(profile?.display_name || "");
+  const { profile, signOut, updateProfile } = useAuth();
+  const [displayName, setDisplayName] = useState("");
   const [saved, setSaved] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
   const router = useRouter();
 
+  useEffect(() => {
+    setDisplayName(profile?.display_name || "");
+  }, [profile?.display_name]);
+
   const handleSave = async () => {
+    setSaving(true);
+    setError("");
+    const { error: saveError } = await updateProfile({
+      display_name: displayName.trim() || null,
+    });
+    setSaving(false);
+
+    if (saveError) {
+      setError(saveError.message);
+      return;
+    }
+
     setSaved(true);
-    await refreshProfile();
     setTimeout(() => setSaved(false), 2000);
   };
 
@@ -46,8 +63,11 @@ export default function SettingsPage() {
             onChange={(e) => setDisplayName(e.target.value)}
             placeholder="表示名を入力"
           />
-          <Button onClick={handleSave} size="md">
-            {saved ? "保存しました！" : "保存"}
+          {error && (
+            <p className="text-red-500 text-sm mb-2">{error}</p>
+          )}
+          <Button onClick={handleSave} size="md" disabled={saving}>
+            {saved ? "保存しました！" : saving ? "保存中..." : "保存"}
           </Button>
         </div>
 

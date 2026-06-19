@@ -1,35 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Trophy, Flame } from "lucide-react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { useAuth } from "@/contexts/AuthContext";
-import { useProgress } from "@/contexts/ProgressContext";
+import { createClient } from "@/lib/supabase/client";
 
-type TabType = "weekly" | "monthly" | "total";
-
-const DEMO_RANKING = [
-  { rank: 1, display_name: "マスター", avatar_icon: "master", total_xp: 320, streak: 14 },
-  { rank: 2, display_name: "マジくん", avatar_icon: "maji-kun", total_xp: 150, streak: 7 },
-  { rank: 3, display_name: "デモユーザー", avatar_icon: "maji-kun", total_xp: 50, streak: 3 },
-];
+interface RankingEntry {
+  user_id: string;
+  display_name: string;
+  avatar_icon: string;
+  total_xp: number;
+  streak: number;
+  rank: number;
+}
 
 export default function RankingPage() {
-  const [tab, setTab] = useState<TabType>("weekly");
-  const { profile } = useAuth();
-  const { totalXp, streak } = useProgress();
+  const { user, profile } = useAuth();
+  const [ranking, setRanking] = useState<RankingEntry[]>([]);
+  const [loading, setLoading] = useState(true);
+  const supabase = createClient();
 
-  const tabs: { key: TabType; label: string }[] = [
-    { key: "weekly", label: "週間" },
-    { key: "monthly", label: "月間" },
-    { key: "total", label: "累計" },
-  ];
+  const loadRanking = useCallback(async () => {
+    if (!supabase || !user) {
+      setLoading(false);
+      return;
+    }
 
-  const ranking = DEMO_RANKING.map((entry, i) =>
-    i === 2
-      ? { ...entry, display_name: profile?.display_name || "あなた", total_xp: totalXp, streak }
-      : entry
-  ).sort((a, b) => b.total_xp - a.total_xp);
+    const { data, error } = await supabase.rpc("drill_get_friend_ranking");
+
+    if (!error && data) {
+      setRanking(
+        data.map((entry: RankingEntry) => ({
+          ...entry,
+          display_name: entry.display_name || "ユーザー",
+        }))
+      );
+    }
+    setLoading(false);
+  }, [supabase, user]);
+
+  useEffect(() => {
+    loadRanking();
+  }, [loadRanking]);
 
   return (
     <AppLayout>
@@ -38,73 +51,67 @@ export default function RankingPage() {
           フレンドランキング
         </h1>
 
-        <div className="flex bg-gray-100 rounded-xl p-1 mb-6">
-          {tabs.map(({ key, label }) => (
-            <button
-              key={key}
-              onClick={() => setTab(key)}
-              className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-                tab === key
-                  ? "bg-white text-majiai shadow-sm"
-                  : "text-gray-500"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-
-        <div className="space-y-2">
-          {ranking.map((entry, index) => {
-            const isMe = entry.display_name === (profile?.display_name || "あなた") || index === 2;
-            return (
-              <div
-                key={entry.rank}
-                className={`flex items-center gap-3 rounded-xl p-4 ${
-                  isMe
-                    ? "bg-majiai/5 border-2 border-majiai/20"
-                    : "bg-white border border-gray-100"
-                } shadow-sm`}
-              >
+        {loading ? (
+          <p className="text-gray-400 text-center py-8">読み込み中...</p>
+        ) : ranking.length === 0 ? (
+          <div className="bg-white rounded-xl p-6 border border-gray-100 text-center text-gray-500 text-sm">
+            ランキングに表示するユーザーがいません。フレンドを追加すると比較できます。
+          </div>
+        ) : (
+          <div className="space-y-2">
+            {ranking.map((entry, index) => {
+              const isMe = entry.user_id === user?.id;
+              return (
                 <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
-                    index === 0
-                      ? "bg-yellow-100 text-yellow-600"
-                      : index === 1
-                      ? "bg-gray-100 text-gray-500"
-                      : index === 2
-                      ? "bg-amber-100 text-amber-700"
-                      : "bg-gray-50 text-gray-400"
-                  }`}
+                  key={entry.user_id}
+                  className={`flex items-center gap-3 rounded-xl p-4 ${
+                    isMe
+                      ? "bg-majiai/5 border-2 border-majiai/20"
+                      : "bg-white border border-gray-100"
+                  } shadow-sm`}
                 >
-                  {index === 0 ? (
-                    <Trophy size={16} />
-                  ) : (
-                    index + 1
-                  )}
-                </div>
-                <div className="w-10 h-10 bg-majiai/10 rounded-full flex items-center justify-center text-majiai font-bold">
-                  {entry.display_name.charAt(0)}
-                </div>
-                <div className="flex-1">
-                  <p className="font-bold text-gray-900">
-                    {entry.display_name}
-                    {isMe && (
-                      <span className="text-majiai text-xs ml-1">（あなた）</span>
-                    )}
-                  </p>
-                  <div className="flex items-center gap-3 text-xs text-gray-400">
-                    <span className="flex items-center gap-1">
-                      <Flame size={12} className="text-streak" />
-                      {entry.streak}日
-                    </span>
-                    <span>⭐ {entry.total_xp} XP</span>
+                  <div
+                    className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
+                      index === 0
+                        ? "bg-yellow-100 text-yellow-600"
+                        : index === 1
+                        ? "bg-gray-100 text-gray-500"
+                        : index === 2
+                        ? "bg-amber-100 text-amber-700"
+                        : "bg-gray-50 text-gray-400"
+                    }`}
+                  >
+                    {index === 0 ? <Trophy size={16} /> : entry.rank}
+                  </div>
+                  <div className="w-10 h-10 bg-majiai/10 rounded-full flex items-center justify-center text-majiai font-bold">
+                    {entry.display_name.charAt(0)}
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-bold text-gray-900">
+                      {entry.display_name}
+                      {isMe && (
+                        <span className="text-majiai text-xs ml-1">（あなた）</span>
+                      )}
+                    </p>
+                    <div className="flex items-center gap-3 text-xs text-gray-400">
+                      <span className="flex items-center gap-1">
+                        <Flame size={12} className="text-streak" />
+                        {entry.streak}日
+                      </span>
+                      <span>⭐ {entry.total_xp} XP</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
+
+        {profile?.friend_code && (
+          <p className="text-center text-gray-400 text-xs mt-6">
+            あなたのフレンドコード: {profile.friend_code}
+          </p>
+        )}
       </div>
     </AppLayout>
   );
