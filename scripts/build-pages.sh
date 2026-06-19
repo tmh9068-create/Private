@@ -1,9 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-# GitHub Pages 静的エクスポート用ビルド
-# middleware は静的エクスポートと非互換のため一時的に無効化
-
 MIDDLEWARE="src/middleware.ts"
 BACKUP="src/middleware.ts.bak"
 
@@ -19,8 +16,15 @@ cleanup() {
 trap cleanup EXIT
 
 export STATIC_EXPORT=true
-export GITHUB_PAGES=true
+
+# GitHub Pages: /Private  basePath
+# Supabase Storage: storage public path
+# その他: ルート配置
+if [ "${DEPLOY_TARGET:-github}" = "github" ]; then
+  export GITHUB_PAGES=true
+elif [ "${DEPLOY_TARGET}" = "supabase" ]; then
+  export SUPABASE_STORAGE=true
+fi
 
 npm run build
-
 echo "Static export complete: out/"

@@ -1,0 +1,6 @@
+repository:
+  has_pages: true
+  pages:
+    source:
+      branch: gh-pages
+      path: /
