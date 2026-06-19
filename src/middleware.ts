@@ -10,7 +10,8 @@ export default auth((req) => {
     isLoginPage ||
     isAuthApi ||
     pathname === "/privacy" ||
-    pathname === "/terms";
+    pathname === "/terms" ||
+    pathname === "/api/health";
 
   if (!isLoggedIn && !isPublic) {
     const loginUrl = new URL("/login", req.nextUrl.origin);

@@ -1,4 +1,4 @@
-import { lectureVideos } from "@/lib/content/lectures";
+import { getLectureVideos } from "@/lib/content/lecture-videos";
 import { MuxVideoPlayer } from "@/components/MuxVideoPlayer";
 import { PageProgressToggle } from "@/components/PageProgressToggle";
 
@@ -7,6 +7,7 @@ type ArchiveLectureContentProps = {
 };
 
 export function ArchiveLectureContent({ completed = false }: ArchiveLectureContentProps) {
+  const lectureVideos = getLectureVideos();
   return (
     <div className="article">
       <p>各回の講義動画と関連資料をまとめています。下のリストから視聴したい回を選んでください。</p>

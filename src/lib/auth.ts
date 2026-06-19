@@ -4,6 +4,7 @@ import Resend from "next-auth/providers/resend";
 import Credentials from "next-auth/providers/credentials";
 import type { Adapter } from "next-auth/adapters";
 import { prisma } from "@/lib/prisma";
+import { sendVerificationRequest } from "@/lib/email/send-verification";
 
 async function findAllowedEmail(email: string) {
   return prisma.allowedEmail.findUnique({
@@ -44,6 +45,8 @@ async function ensureStudentProfile(userId: string, email: string) {
 const providers: NextAuthConfig["providers"] = [
   Resend({
     from: process.env.AUTH_RESEND_FROM || "noreply@example.com",
+    apiKey: process.env.AUTH_RESEND_KEY,
+    sendVerificationRequest,
   }),
 ];
 

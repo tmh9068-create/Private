@@ -13,6 +13,14 @@ export default function LoginPage({ searchParams }: LoginPageProps) {
         </div>
         <p className="mt-4 text-center text-ui-sm text-txt-dim">
           © 2026 AI-Driven School / 株式会社Surprise
+          <span className="mx-2">·</span>
+          <a href="/privacy" className="hover:text-txt-sub">
+            プライバシーポリシー
+          </a>
+          <span className="mx-2">·</span>
+          <a href="/terms" className="hover:text-txt-sub">
+            利用規約
+          </a>
         </p>
       </div>
     </div>
