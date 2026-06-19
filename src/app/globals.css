@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --majiai: #d6145e;
+  --background: #f9fafb;
+  --foreground: #1f2937;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+@supports (height: 100dvh) {
+  html,
+  body,
+  #__next {
+    height: 100dvh;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+@media screen and (min-width: 431px) {
+  html {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    min-height: 100vh;
+  }
+
+  body {
+    background: transparent;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  html {
+    background: #f9fafb;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
