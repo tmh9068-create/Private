@@ -40,6 +40,20 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
 
+## デプロイ
+
+詳細は [DEPLOY.md](./DEPLOY.md) を参照してください。
+
+### クイックデプロイ（Vercel）
+
+1. [vercel.com](https://vercel.com) で GitHub リポジトリをインポート
+2. Deploy をクリック（環境変数は任意）
+
+```bash
+# または CLI から
+npm install -g vercel && vercel login && vercel --prod
+```
+
 ## ページ構成
 
 | パス | 説明 |
