@@ -81,7 +81,7 @@ GitHub Secrets に設定:
 | 変数 | 必須 | 説明 |
 |---|---|---|
 | `AUTH_SECRET` | ✅ | ランダムな長い文字列（`openssl rand -base64 32`） |
-| `AUTH_URL` | ✅ | 本番 URL（例: `https://your-app.vercel.app`） |
+| `AUTH_URL` | △ | 本番 URL。Vercel では未設定でも `VERCEL_URL` から自動検出 |
 | `DATABASE_URL` | ✅ | PostgreSQL 接続文字列 |
 | `AUTH_RESEND_KEY` | ✅ | Resend API キー |
 | `AUTH_RESEND_FROM` | ✅ | 送信元メール（認証済みドメイン） |

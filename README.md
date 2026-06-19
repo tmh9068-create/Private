@@ -14,8 +14,15 @@
 ## クイックスタート
 
 ```bash
+npm run setup    # Docker起動・.env作成・migrate・seed まで一括
+npm run dev
+```
+
+手動で行う場合:
+
+```bash
 npm install
-docker compose up -d          # PostgreSQL 起動
+docker compose up -d
 cp .env.example .env
 npx prisma migrate deploy
 npm run db:seed
