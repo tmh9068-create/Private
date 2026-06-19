@@ -1,103 +1,28 @@
-"use client";
+import { LoginForm } from "@/components/LoginForm";
 
-import { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Mail, Lock, Eye, EyeOff } from "lucide-react";
-import { AuthLayout } from "@/components/layout/AuthLayout";
-import { Input } from "@/components/ui/Input";
-import { Button } from "@/components/ui/Button";
-import { useAuth } from "@/contexts/AuthContext";
+type LoginPageProps = {
+  searchParams: { error?: string; callbackUrl?: string };
+};
 
-export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const { signIn } = useAuth();
-  const router = useRouter();
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
-
-    const { error } = await signIn(email, password);
-    setLoading(false);
-
-    if (error) {
-      setError("メールアドレスまたはパスワードが正しくありません");
-      return;
-    }
-
-    router.push("/home");
-  };
-
+export default function LoginPage({ searchParams }: LoginPageProps) {
   return (
-    <AuthLayout>
-      <div className="flex-1 flex flex-col">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">ログイン</h2>
-        <p className="text-gray-500 text-sm mb-6">
-          アカウントにログインして学習を始めましょう
-        </p>
-
-        <form onSubmit={handleSubmit}>
-          <Input
-            label="メールアドレス"
-            type="email"
-            placeholder="example@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            icon={<Mail size={18} />}
-            required
-          />
-
-          <Input
-            label="パスワード"
-            type={showPassword ? "text" : "password"}
-            placeholder="6文字以上"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            icon={<Lock size={18} />}
-            rightIcon={
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="focus:outline-none"
-              >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-              </button>
-            }
-            required
-            minLength={6}
-          />
-
-          <div className="text-right mb-6">
-            <Link
-              href="/forgot-password"
-              className="text-gray-500 text-sm hover:text-majiai"
-            >
-              パスワードを忘れた方
-            </Link>
-          </div>
-
-          {error && (
-            <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
-          )}
-
-          <Button type="submit" loading={loading}>
-            ログイン
-          </Button>
-        </form>
-
-        <p className="text-center text-gray-500 text-sm mt-6">
-          アカウントをお持ちでない方は{" "}
-          <Link href="/signup" className="text-majiai font-bold">
-            新規登録
-          </Link>
+    <div className="flex min-h-dvh items-center justify-center bg-page px-5">
+      <div className="w-full max-w-[420px]">
+        <div className="rounded-hero border border-bd bg-surface px-8 py-8 shadow-hover max-sm:px-5 max-sm:py-6">
+          <LoginForm error={searchParams.error ?? null} />
+        </div>
+        <p className="mt-4 text-center text-ui-sm text-txt-dim">
+          © 2026 AI-Driven School / 株式会社Surprise
+          <span className="mx-2">·</span>
+          <a href="/privacy" className="hover:text-txt-sub">
+            プライバシーポリシー
+          </a>
+          <span className="mx-2">·</span>
+          <a href="/terms" className="hover:text-txt-sub">
+            利用規約
+          </a>
         </p>
       </div>
-    </AuthLayout>
+    </div>
   );
 }

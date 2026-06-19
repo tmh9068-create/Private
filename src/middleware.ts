@@ -1,12 +1,33 @@
-import { type NextRequest } from "next/server";
-import { updateSession } from "@/lib/supabase/middleware";
+import { auth } from "@/lib/auth";
+import { NextResponse } from "next/server";
 
-export async function middleware(request: NextRequest) {
-  return await updateSession(request);
-}
+export default auth((req) => {
+  const isLoggedIn = !!req.auth;
+  const { pathname } = req.nextUrl;
+  const isLoginPage = pathname === "/login";
+  const isAuthApi = pathname.startsWith("/api/auth");
+  const isPublic =
+    isLoginPage ||
+    isAuthApi ||
+    pathname === "/privacy" ||
+    pathname === "/terms" ||
+    pathname === "/api/health";
+
+  if (!isLoggedIn && !isPublic) {
+    const loginUrl = new URL("/login", req.nextUrl.origin);
+    loginUrl.searchParams.set("callbackUrl", pathname);
+    return NextResponse.redirect(loginUrl);
+  }
+
+  if (isLoggedIn && isLoginPage) {
+    return NextResponse.redirect(new URL("/", req.nextUrl.origin));
+  }
+
+  return NextResponse.next();
+});
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|icon.svg|manifest.json|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!_next/static|_next/image|favicon.ico|icon.svg|manifest.json|apple-touch-icon.png|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };

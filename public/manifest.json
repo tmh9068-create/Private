@@ -1,22 +1,16 @@
 {
-  "id": "/",
-  "name": "本気AIドリル",
-  "short_name": "本気AI",
+  "name": "AI-Driven School | 受講生ポータル",
+  "short_name": "AI-Driven School",
+  "description": "AI-Driven School 受講生向けポータルサイト",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1a1a2e",
-  "theme_color": "#1a1a2e",
+  "background_color": "#223A49",
+  "theme_color": "#223A49",
   "icons": [
     {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any"
     }
   ]
