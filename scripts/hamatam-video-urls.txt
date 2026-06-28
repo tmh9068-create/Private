@@ -1,0 +1,29 @@
+# 田村 洸樹（@hamatam）関連 YouTube 動画 URL 一覧
+# Googleアカウント復旧不可の場合、公開・リンク限定動画は yt-dlp で取得を試してください
+# 使い方: yt-dlp -a scripts/hamatam-video-urls.txt -o "%(upload_date)s - %(title)s [%(id)s].%(ext)s"
+
+# --- A. 公式チャンネル公開動画（16本）---
+https://www.youtube.com/watch?v=zr8XpK2p130
+https://www.youtube.com/watch?v=GyuI6oz1O4c
+https://www.youtube.com/watch?v=z2y5EPnPajY
+https://www.youtube.com/watch?v=w3mK90_URFU
+https://www.youtube.com/watch?v=bdl3GdpZjxI
+https://www.youtube.com/watch?v=wDayyaeRS8I
+https://www.youtube.com/watch?v=NZU7RU46IrA
+https://www.youtube.com/watch?v=FIn5EJZsXNY
+https://www.youtube.com/watch?v=T39NAxlcEkk
+https://www.youtube.com/watch?v=3J9bpBLI5EM
+https://www.youtube.com/watch?v=Id0SNj6qDE8
+https://www.youtube.com/watch?v=ktMx5Cvs01M
+https://www.youtube.com/watch?v=HwCQgP4zslE
+https://www.youtube.com/watch?v=uYfok57zdiI
+https://www.youtube.com/watch?v=AsfMJBrDu9s
+https://www.youtube.com/watch?v=vB6SPMGpmqs
+
+# --- B. 限定公開（リンクがあれば取得可能な場合あり）---
+https://www.youtube.com/watch?v=9T147VMIkNE
+https://www.youtube.com/watch?v=QKtnRiYUDP8
+
+# --- C. 他チャンネル投稿（2本）---
+https://www.youtube.com/watch?v=cBilw2zSU5w
+https://www.youtube.com/watch?v=G5GpI8dh0oQ
