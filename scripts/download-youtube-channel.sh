@@ -10,11 +10,11 @@ set -euo pipefail
 #
 # 例:
 #   ./scripts/download-youtube-channel.sh ~/cookies.txt
-#   ./scripts/download-youtube-channel.sh ~/cookies.txt https://www.youtube.com/@youtubetmh6174
+#   ./scripts/download-youtube-channel.sh ~/cookies.txt https://www.youtube.com/@hamatam
 
 COOKIES_FILE="${1:-}"
-CHANNEL_URL="${2:-https://www.youtube.com/@youtubetmh6174}"
-OUT_DIR="${OUT_DIR:-/opt/cursor/artifacts/youtube-downloads/tmh068}"
+CHANNEL_URL="${2:-https://www.youtube.com/@hamatam}"
+OUT_DIR="${OUT_DIR:-/opt/cursor/artifacts/youtube-downloads/hamatam}"
 ARCHIVE_FILE="${OUT_DIR}/download-archive.txt"
 LOG_FILE="${OUT_DIR}/download.log"
 
@@ -58,6 +58,7 @@ yt-dlp \
   -f "bv*[height<=1080]+ba/b[height<=1080]/b" \
   -o "%(upload_date)s - %(title)s [%(id)s].%(ext)s" \
   "${CHANNEL_URL}/videos" \
+  "${CHANNEL_URL}/shorts" \
   "${CHANNEL_URL}/streams" \
   2>&1 | tee -a "${LOG_FILE}"
 
