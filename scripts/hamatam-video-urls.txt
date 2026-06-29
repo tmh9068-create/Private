@@ -23,6 +23,9 @@ https://www.youtube.com/watch?v=vB6SPMGpmqs
 # --- B. 限定公開（リンクがあれば取得可能な場合あり）---
 https://www.youtube.com/watch?v=9T147VMIkNE
 https://www.youtube.com/watch?v=QKtnRiYUDP8
+https://www.youtube.com/watch?v=uSNdxLm7Wlk
+# --- B2. アカウント終了済み（YouTubeから取得不可）---
+# https://www.youtube.com/watch?v=TfMycyKp9ts
 
 # --- C. 他チャンネル投稿（2本）---
 https://www.youtube.com/watch?v=cBilw2zSU5w
