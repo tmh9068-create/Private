@@ -368,6 +368,57 @@ DVD: TV用別カメラ映像＋PA音源（ロッキン刈谷限定）
 
 ---
 
+## 12. Phase 3 追調査（2026-06-27）
+
+### 12.1 東海テレビ 2008年オンエア日
+
+| 項目 | 結果 |
+|------|------|
+| 2008年番組名・放送日 | **未確定**（公開Web一次資料 0件） |
+| TV用映像の制作 | **確定**（dvd.html） |
+| 系列番組パターン（'09〜） | 金曜深夜25時台・約30分（下記） |
+
+| 年 | 放送日時 |
+|----|----------|
+| 2009 | 7/24（金）25:35〜26:05 |
+| 2010 | 11/5（金）25:20〜25:50 |
+
+**推定**: 2008年も同系列の可能性。想定ウィンドウは **11月上旬の金曜深夜** だが未確認。
+
+詳細: `phase3_tokai_tv_broadcast_ja.md`
+
+### 12.2 Zepp 曲02-04
+
+| # | 曲 | Phase 3 確度 |
+|---|-----|-------------|
+| 01 | MONSTER TREE | 高 |
+| 02 | 流れ星（Mr.Children） | **中〜高**（本番後コメント） |
+| 03 | オリジナル | 中 |
+| 04 | 星空? / 未定 | 低 |
+
+YouTube・Wayback・Filmot いずれも映像取得不可。**DVD入手が確定の唯一ルート。**
+
+詳細: `phase3_zepp_songs_ja.md`
+
+### 12.3 YUKARI＝稲田由花里
+
+| 項目 | Phase 3 追加確認 |
+|------|------------------|
+| 愛知在住 | Ameba本人コメント「愛知の方です」（2012） |
+| 身長153cm | Amebaコメント |
+| プリ★パニ直接言及 | Ameba・CD・Web検索すべて **未発見** |
+| 公式同一性 | **未確定**（間接証拠のみ） |
+
+詳細: `phase3_yucha_identity_ja.md`
+
+### 12.4 Phase 3 残課題
+
+1. ロッキン限定DVD入手（曲名確定・TV映像）
+2. 東海テレビ放送資料室 / 新聞テレビ欄（2008年11月）
+3. 本人・メンバーによるプリ★パニ時代の明示言及
+
+---
+
 ## 付録: 保存ファイル
 
 | ファイル | 内容 |
@@ -377,4 +428,7 @@ DVD: TV用別カメラ映像＋PA音源（ロッキン刈谷限定）
 | `/opt/cursor/artifacts/puripani/analysis/entries_full.json` | 追加本文30件超 |
 | `/opt/cursor/artifacts/puripani/analysis/corpus_fast.json` | 月別ページ＋プレビュー本文 |
 | `/opt/cursor/artifacts/puripani/analysis/entities_extracted.json` | 固有名詞抽出結果 |
+| `phase3_tokai_tv_broadcast_ja.md` | 東海テレビ2008放送調査（Phase 3） |
+| `phase3_zepp_songs_ja.md` | Zepp曲02-04調査（Phase 3） |
+| `phase3_yucha_identity_ja.md` | 同一性調査（Phase 3） |
 | `/opt/cursor/artifacts/puripani/zepp-flight-08/` | Zepp本番写真（4枚） |
