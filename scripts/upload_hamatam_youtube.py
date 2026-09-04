@@ -50,7 +50,30 @@ def append_archive(path: Path, video_id: str) -> None:
         handle.write(f"{video_id}\n")
 
 
-def get_credentials(client_secrets: Path, token_file: Path) -> Credentials:
+def run_oauth_flow(client_secrets: Path, manual: bool = False) -> Credentials:
+    flow = InstalledAppFlow.from_client_secrets_file(str(client_secrets), SCOPES)
+    if manual:
+        flow.redirect_uri = "http://localhost"
+        auth_url, _ = flow.authorization_url(
+            access_type="offline",
+            include_granted_scopes="true",
+            prompt="consent",
+        )
+        print("\n=== OAuth 認証 ===")
+        print("1. 次の URL をブラウザで開く（hamatam2006@gmail.com でログイン）:")
+        print(auth_url)
+        print("\n2. 許可後、ブラウザのアドレスバーに表示される URL をすべてコピー")
+        print("   （localhost に接続できない画面でも URL 自体は表示されます）")
+        redirect_response = input("\n3. コピーした URL を貼り付けて Enter: ").strip()
+        if not redirect_response:
+            raise SystemExit("認証 URL が入力されませんでした。")
+        flow.fetch_token(authorization_response=redirect_response)
+        return flow.credentials
+
+    return flow.run_local_server(port=8080, open_browser=False)
+
+
+def get_credentials(client_secrets: Path, token_file: Path, manual: bool = False) -> Credentials:
     creds: Credentials | None = None
     if token_file.exists():
         creds = Credentials.from_authorized_user_file(str(token_file), SCOPES)
@@ -62,10 +85,9 @@ def get_credentials(client_secrets: Path, token_file: Path) -> Credentials:
             raise SystemExit(
                 "OAuth client secrets not found.\n"
                 f"Expected: {client_secrets}\n"
-                "See scripts/HAMATAM_YOUTUBE_REUPLOAD.md for setup steps."
+                "See scripts/HAMATAM_AUTO_UPLOAD_SETUP.md for setup steps."
             )
-        flow = InstalledAppFlow.from_client_secrets_file(str(client_secrets), SCOPES)
-        creds = flow.run_local_server(port=8080, open_browser=False)
+        creds = run_oauth_flow(client_secrets, manual=manual)
 
     token_file.parent.mkdir(parents=True, exist_ok=True)
     token_file.write_text(creds.to_json(), encoding="utf-8")
@@ -122,9 +144,14 @@ def main() -> int:
     parser.add_argument("--sleep-sec", type=int, default=30)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--auth-only", action="store_true")
+    parser.add_argument(
+        "--manual-auth",
+        action="store_true",
+        help="スマホ等: 認証URLを開き、リダイレクトURLを手入力",
+    )
     args = parser.parse_args()
 
-    creds = get_credentials(args.client_secrets, args.token_file)
+    creds = get_credentials(args.client_secrets, args.token_file, manual=args.manual_auth)
     if args.auth_only:
         print(f"Authenticated. Token saved to {args.token_file}")
         return 0

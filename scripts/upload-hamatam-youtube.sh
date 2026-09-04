@@ -15,7 +15,7 @@ set -euo pipefail
 #   BACKUP_DIR=~/Downloads/hamatam ./scripts/upload-hamatam-youtube.sh dry-run
 #   BACKUP_DIR=~/Downloads/hamatam ./scripts/upload-hamatam-youtube.sh upload
 #
-# 詳細: scripts/HAMATAM_YOUTUBE_REUPLOAD.md
+# 詳細: scripts/HAMATAM_AUTO_UPLOAD_SETUP.md
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 BACKUP_DIR="${BACKUP_DIR:-/opt/cursor/artifacts/youtube-downloads/hamatam}"
@@ -63,10 +63,15 @@ case "$cmd" in
     ;;
   auth)
     ensure_python_deps
+    MANUAL_FLAG=()
+    if [[ "${MANUAL_AUTH:-0}" == "1" ]]; then
+      MANUAL_FLAG=(--manual-auth)
+    fi
     "$PYTHON" "$ROOT_DIR/scripts/upload_hamatam_youtube.py" \
       --client-secrets "$CLIENT_SECRETS" \
       --token-file "$TOKEN_FILE" \
-      --auth-only
+      --auth-only \
+      "${MANUAL_FLAG[@]}"
     ;;
   manifest)
     if [[ ! -d "$BACKUP_DIR" ]]; then
@@ -90,7 +95,7 @@ case "$cmd" in
     ensure_python_deps
     if [[ ! -f "$CLIENT_SECRETS" ]]; then
       echo "エラー: OAuth クライアント JSON がありません: $CLIENT_SECRETS" >&2
-      echo "scripts/HAMATAM_YOUTUBE_REUPLOAD.md を参照してください。" >&2
+      echo "scripts/HAMATAM_AUTO_UPLOAD_SETUP.md を参照してください。" >&2
       exit 1
     fi
     "$0" manifest
