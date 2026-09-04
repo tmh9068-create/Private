@@ -10,6 +10,7 @@ set -euo pipefail
 #   4. バックアップ動画を BACKUP_DIR に置く
 #
 # 使い方:
+#   ./scripts/download-hamatam-gdrive.sh
 #   BACKUP_DIR=~/Downloads/hamatam ./scripts/upload-hamatam-youtube.sh auth
 #   BACKUP_DIR=~/Downloads/hamatam ./scripts/upload-hamatam-youtube.sh dry-run
 #   BACKUP_DIR=~/Downloads/hamatam ./scripts/upload-hamatam-youtube.sh upload
@@ -38,6 +39,7 @@ usage() {
 Usage: $0 <command>
 
 Commands:
+  pull       Google Drive からバックアップを取得
   auth       OAuth 認証のみ（ブラウザで許可）
   manifest   バックアップから manifest を生成
   dry-run    アップロード対象を表示（実際には送らない）
@@ -56,6 +58,9 @@ EOF
 cmd="${1:-help}"
 
 case "$cmd" in
+  pull)
+    OUT_DIR="$BACKUP_DIR" "$ROOT_DIR/scripts/download-hamatam-gdrive.sh"
+    ;;
   auth)
     ensure_python_deps
     "$PYTHON" "$ROOT_DIR/scripts/upload_hamatam_youtube.py" \

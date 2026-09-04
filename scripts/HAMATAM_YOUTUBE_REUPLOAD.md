@@ -38,12 +38,33 @@ mkdir -p ~/.config/youtube-upload
 cp ~/Downloads/client_secret_*.json ~/.config/youtube-upload/client_secrets.json
 ```
 
-## 3. バックアップ動画を配置
+## 3. バックアップ動画を取得
 
-ローカルのバックアップを1つのフォルダにまとめます。
+### Google Drive（推奨）
+
+バックアップフォルダ:
+
+https://drive.google.com/drive/folders/19kIWb4iUpfliCXhIhKCY0BH5awskWXaD
+
+**重要:** Cloud Agent / gdown から取得するには、フォルダの共有設定を次に変更してください。
+
+1. Drive でフォルダを開く
+2. **共有** → **一般的なアクセス** を **リンクを知っている全員** に変更
+3. 権限: **閲覧者**
+
+設定後、ダウンロード:
 
 ```bash
-# 例
+./scripts/download-hamatam-gdrive.sh
+# または
+./scripts/upload-hamatam-youtube.sh pull
+```
+
+保存先（デフォルト）: `/opt/cursor/artifacts/youtube-downloads/hamatam`
+
+### ローカルに既にある場合
+
+```bash
 export BACKUP_DIR=~/Videos/hamatam-backup
 ls "$BACKUP_DIR"
 ```
@@ -119,6 +140,7 @@ PRIVACY=public MAX_UPLOADS=6 BACKUP_DIR=~/Videos/hamatam-backup \
 |---------|------|
 | `scripts/download-youtube-channel.sh` | 旧チャンネル一括ダウンロード（cookies 必要） |
 | `scripts/download-openutils-cloud.sh` | クラウド向け一括ダウンロード |
+| `scripts/download-hamatam-gdrive.sh` | Google Drive バックアップ取得 |
 | `scripts/prepare-hamatam-manifest.py` | バックアップ → manifest 生成 |
 | `scripts/upload_hamatam_youtube.py` | YouTube API アップロード本体 |
 | `scripts/upload-hamatam-youtube.sh` | 上記のラッパー |
