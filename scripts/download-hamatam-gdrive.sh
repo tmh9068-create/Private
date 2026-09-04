@@ -56,3 +56,12 @@ echo ""
 echo "=== Download complete ==="
 find "${OUT_DIR}" -type f \( -iname '*.mp4' -o -iname '*.mkv' -o -iname '*.webm' \) | wc -l | xargs -I{} echo "Video files: {}"
 du -sh "${OUT_DIR}" | awk '{print "Total size:", $1}'
+
+if [[ -f "${OUT_DIR}/MANIFEST.json" ]]; then
+  echo "Manifest: ${OUT_DIR}/MANIFEST.json"
+fi
+
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+if [[ -x "${ROOT_DIR}/scripts/prepare-hamatam-manifest.py" ]]; then
+  python3 "${ROOT_DIR}/scripts/prepare-hamatam-manifest.py" "${OUT_DIR}"
+fi

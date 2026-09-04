@@ -14,6 +14,7 @@ NAMED_FILE = re.compile(
     r"^(?P<date>\d{8}) - (?P<title>.+?) \[(?P<id>[A-Za-z0-9_-]{11})\]\.(?P<ext>[^.]+)$"
 )
 PLAIN_FILE = re.compile(r"^(?P<id>[A-Za-z0-9_-]{11})\.(?P<ext>[^.]+)$")
+GDRIVE_FILE = re.compile(r"^(?P<id>[A-Za-z0-9_-]{11}) - (?P<title>.+)\.(?P<ext>[^.]+)$")
 
 
 def load_url_ids(url_file: Path) -> list[str]:
@@ -48,7 +49,22 @@ def find_video_for_id(backup_dir: Path, video_id: str) -> Path | None:
     return candidates[0]
 
 
+def load_drive_manifest(backup_dir: Path) -> dict[str, dict]:
+    manifest_path = backup_dir / "MANIFEST.json"
+    if not manifest_path.exists():
+        return {}
+    try:
+        items = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return {item["id"]: item for item in items if isinstance(item, dict) and item.get("id")}
+
+
 def title_from_video(path: Path, video_id: str) -> tuple[str | None, str | None]:
+    gdrive = GDRIVE_FILE.match(path.name)
+    if gdrive and gdrive.group("id") == video_id:
+        return gdrive.group("title"), None
+
     named = NAMED_FILE.match(path.name)
     if named:
         return named.group("title"), named.group("date")
@@ -73,12 +89,15 @@ def title_from_video(path: Path, video_id: str) -> tuple[str | None, str | None]
 
 
 def build_manifest(backup_dir: Path, url_file: Path) -> list[dict]:
+    drive_manifest = load_drive_manifest(backup_dir)
     entries: list[dict] = []
     for video_id in load_url_ids(url_file):
         video_path = find_video_for_id(backup_dir, video_id)
         title, upload_date = (None, None)
         if video_path:
             title, upload_date = title_from_video(video_path, video_id)
+        if not title and video_id in drive_manifest:
+            title = drive_manifest[video_id].get("title")
 
         entries.append(
             {
