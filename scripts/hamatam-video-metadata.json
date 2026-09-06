@@ -1,0 +1,566 @@
+{
+  "channel": {
+    "name": "Hamatam",
+    "handle": "@hamatam2006",
+    "url": "https://www.youtube.com/@hamatam2006",
+    "description": "田村 洸樹（HAMATAM / はまたむ）のギター演奏アーカイブチャンネルです。\n\nDEPAPEPE のカバー、ストリートライブ、ライブハウス出演などの録画を再公開しています。\n旧チャンネル @hamatam の動画をバックアップから復元したものです。\n\n▶ 演奏者: 田村 洸樹（HAMATAM）\n▶ ジャンル: アコースティックギター / DEPAPEPE\n▶ お問い合わせ: hamatam2006@gmail.com",
+    "playlists": [
+      {
+        "title": "名古屋栄タイトロープ",
+        "video_ids": [
+          "zr8XpK2p130",
+          "GyuI6oz1O4c",
+          "z2y5EPnPajY",
+          "w3mK90_URFU"
+        ]
+      },
+      {
+        "title": "DEPAPEPE カバー",
+        "video_ids": [
+          "zr8XpK2p130",
+          "GyuI6oz1O4c",
+          "z2y5EPnPajY",
+          "w3mK90_URFU",
+          "bdl3GdpZjxI",
+          "wDayyaeRS8I",
+          "NZU7RU46IrA",
+          "FIn5EJZsXNY",
+          "vB6SPMGpmqs",
+          "AsfMJBrDu9s",
+          "uYfok57zdiI",
+          "HwCQgP4zslE",
+          "ktMx5Cvs01M"
+        ]
+      },
+      {
+        "title": "ライブ・イベント",
+        "video_ids": [
+          "T39NAxlcEkk",
+          "3J9bpBLI5EM",
+          "Id0SNj6qDE8",
+          "cBilw2zSU5w",
+          "G5GpI8dh0oQ",
+          "bdl3GdpZjxI"
+        ]
+      },
+      {
+        "title": "ライオンズクラブ / スピーチ（限定公開推奨）",
+        "video_ids": [
+          "9T147VMIkNE",
+          "QKtnRiYUDP8",
+          "uSNdxLm7Wlk",
+          "6sJAap_yMmk",
+          "scpBTdGPzdg"
+        ]
+      }
+    ]
+  },
+  "videos": [
+    {
+      "no": 1,
+      "original_id": "zr8XpK2p130",
+      "original_url": "https://www.youtube.com/watch?v=zr8XpK2p130",
+      "source_file": "zr8XpK2p130 - overthesea（DEPAPEPE） HAMATAM ＠名古屋栄タイトロープ.mp4",
+      "title": "overthesea（DEPAPEPE）　HAMATAM　＠名古屋栄タイトロープ",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=zr8XpK2p130\n元動画ID: zr8XpK2p130\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 2,
+      "original_id": "GyuI6oz1O4c",
+      "original_url": "https://www.youtube.com/watch?v=GyuI6oz1O4c",
+      "source_file": "GyuI6oz1O4c - きっとまたいつか（DEPAPEPE） HAMATAM ＠名古屋栄タイトロープ.mp4",
+      "title": "きっとまたいつか（DEPAPEPE）　HAMATAM　＠名古屋栄タイトロープ",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=GyuI6oz1O4c\n元動画ID: GyuI6oz1O4c\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 3,
+      "original_id": "z2y5EPnPajY",
+      "original_url": "https://www.youtube.com/watch?v=z2y5EPnPajY",
+      "source_file": "z2y5EPnPajY - キミドリ（DEPAPEPE） HAMATAM ＠名古屋栄タイトロープ.mp4",
+      "title": "キミドリ（DEPAPEPE）　HAMATAM　＠名古屋栄タイトロープ",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=z2y5EPnPajY\n元動画ID: z2y5EPnPajY\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 4,
+      "original_id": "w3mK90_URFU",
+      "original_url": "https://www.youtube.com/watch?v=w3mK90_URFU",
+      "source_file": "w3mK90_URFU - 激情メランコリック（DEPAPEPE） HAMATAM ＠名古屋栄タイトロープ.mp4",
+      "title": "激情メランコリック（DEPAPEPE）　HAMATAM　＠名古屋栄タイトロープ",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=w3mK90_URFU\n元動画ID: w3mK90_URFU\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 5,
+      "original_id": "bdl3GdpZjxI",
+      "original_url": "https://www.youtube.com/watch?v=bdl3GdpZjxI",
+      "source_file": "bdl3GdpZjxI - START(DEPAPEPE) HAMATAM ＠ＫＡＲＩＹＡ洲原音楽祭.mp4",
+      "title": "START(DEPAPEPE)　HAMATAM　＠ＫＡＲＩＹＡ洲原音楽祭",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=bdl3GdpZjxI\n元動画ID: bdl3GdpZjxI\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 6,
+      "original_id": "wDayyaeRS8I",
+      "original_url": "https://www.youtube.com/watch?v=wDayyaeRS8I",
+      "source_file": "wDayyaeRS8I - 星の数だけ願いは届く(DEPAPEPE) by はまたむ(HAMATAM)@Meetmarket2011.mp4",
+      "title": "星の数だけ願いは届く(DEPAPEPE) by はまたむ(HAMATAM)@Meetmarket2011",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=wDayyaeRS8I\n元動画ID: wDayyaeRS8I\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 7,
+      "original_id": "NZU7RU46IrA",
+      "original_url": "https://www.youtube.com/watch?v=NZU7RU46IrA",
+      "source_file": "NZU7RU46IrA - FLOW,SUMMER PARADE(DEPAPEPE) by はまたむ(HAMATAM)@Meetmarket2011.mp4",
+      "title": "FLOW,SUMMER PARADE(DEPAPEPE) by はまたむ(HAMATAM)@Meetmarket2011",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=NZU7RU46IrA\n元動画ID: NZU7RU46IrA\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 8,
+      "original_id": "FIn5EJZsXNY",
+      "original_url": "https://www.youtube.com/watch?v=FIn5EJZsXNY",
+      "source_file": "FIn5EJZsXNY - はまたむ(HAMATAM)_start_(DEPAPEPE)@NagoyaStationStreetLive.mp4",
+      "title": "はまたむ(HAMATAM)\"start\"(DEPAPEPE)@NagoyaStationStreetLive",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=FIn5EJZsXNY\n元動画ID: FIn5EJZsXNY\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 9,
+      "original_id": "T39NAxlcEkk",
+      "original_url": "https://www.youtube.com/watch?v=T39NAxlcEkk",
+      "source_file": "T39NAxlcEkk - 2011_06_04 HAMATAMライブ 4 _ ラハイナ(DEPAPEPE).mp4",
+      "title": "2011/06/04 HAMATAMライブ 4 / ラハイナ(DEPAPEPE)",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=T39NAxlcEkk\n元動画ID: T39NAxlcEkk\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 10,
+      "original_id": "3J9bpBLI5EM",
+      "original_url": "https://www.youtube.com/watch?v=3J9bpBLI5EM",
+      "source_file": "3J9bpBLI5EM - 2011_06_04 HAMATAMライブ 3 _ 風見鶏(DEPAPEPE).mp4",
+      "title": "2011/06/04 HAMATAMライブ 3 / 風見鶏(DEPAPEPE)",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=3J9bpBLI5EM\n元動画ID: 3J9bpBLI5EM\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 11,
+      "original_id": "Id0SNj6qDE8",
+      "original_url": "https://www.youtube.com/watch?v=Id0SNj6qDE8",
+      "source_file": "Id0SNj6qDE8 - HAMATAMライブ(DEPAPEPE)＠安城産業文化公園デンパーク.mp4",
+      "title": "HAMATAMライブ(DEPAPEPE)＠安城産業文化公園デンパーク",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=Id0SNj6qDE8\n元動画ID: Id0SNj6qDE8\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 12,
+      "original_id": "ktMx5Cvs01M",
+      "original_url": "https://www.youtube.com/watch?v=ktMx5Cvs01M",
+      "source_file": "ktMx5Cvs01M - SUNSHINE SURF!!(DEPAPEPE)HAMATAM@TOTAPEPEstudio.mp4",
+      "title": "SUNSHINE SURF!!(DEPAPEPE)HAMATAM@TOTAPEPEstudio",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=ktMx5Cvs01M\n元動画ID: ktMx5Cvs01M\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 13,
+      "original_id": "HwCQgP4zslE",
+      "original_url": "https://www.youtube.com/watch?v=HwCQgP4zslE",
+      "source_file": "HwCQgP4zslE - ありがとう(DEPAPEPE) HAMATAM@TOTAPEPEstudio.mp4",
+      "title": "ありがとう(DEPAPEPE) HAMATAM@TOTAPEPEstudio",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=HwCQgP4zslE\n元動画ID: HwCQgP4zslE\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 14,
+      "original_id": "uYfok57zdiI",
+      "original_url": "https://www.youtube.com/watch?v=uYfok57zdiI",
+      "source_file": "uYfok57zdiI - snow dance(DEPAPEPE) HAMATAM ＠碧南クリスマスバンドコンテスト本選.mp4",
+      "title": "snow dance(DEPAPEPE)　HAMATAM　＠碧南クリスマスバンドコンテスト本選",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=uYfok57zdiI\n元動画ID: uYfok57zdiI\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 15,
+      "original_id": "AsfMJBrDu9s",
+      "original_url": "https://www.youtube.com/watch?v=AsfMJBrDu9s",
+      "source_file": "AsfMJBrDu9s - 星の数だけ願いは届く(DEPAPEPE) HAMATAM ＠海の家ええかげん.mp4",
+      "title": "星の数だけ願いは届く(DEPAPEPE)　HAMATAM　＠海の家ええかげん",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=AsfMJBrDu9s\n元動画ID: AsfMJBrDu9s\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 16,
+      "original_id": "vB6SPMGpmqs",
+      "original_url": "https://www.youtube.com/watch?v=vB6SPMGpmqs",
+      "source_file": "vB6SPMGpmqs - start（ＤＥＰＡＰＥＰＥ） ＨＡＭＡＴＡＭ @雁道商店街.mp4",
+      "title": "start（ＤＥＰＡＰＥＰＥ）　ＨＡＭＡＴＡＭ　@雁道商店街",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=vB6SPMGpmqs\n元動画ID: vB6SPMGpmqs\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 17,
+      "original_id": "9T147VMIkNE",
+      "original_url": "https://www.youtube.com/watch?v=9T147VMIkNE",
+      "source_file": "9T147VMIkNE - 愛知YCEライオンズクラブ結成記念式典.mp4",
+      "title": "愛知YCEライオンズクラブ結成記念式典",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=9T147VMIkNE\n元動画ID: 9T147VMIkNE\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "unlisted",
+      "made_for_kids": false
+    },
+    {
+      "no": 18,
+      "original_id": "QKtnRiYUDP8",
+      "original_url": "https://www.youtube.com/watch?v=QKtnRiYUDP8",
+      "source_file": "QKtnRiYUDP8 - 20200822 AICHI-YCE LIONS CLUB - Virtual Youth Camp 2020 Summer (Virtual Meeting #4).mp4",
+      "title": "20200822 AICHI-YCE LIONS CLUB - Virtual Youth Camp 2020 Summer (Virtual Meeting #4)",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=QKtnRiYUDP8\n元動画ID: QKtnRiYUDP8\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "unlisted",
+      "made_for_kids": false
+    },
+    {
+      "no": 19,
+      "original_id": "uSNdxLm7Wlk",
+      "original_url": "https://www.youtube.com/watch?v=uSNdxLm7Wlk",
+      "source_file": "uSNdxLm7Wlk - MD334 LIONS CLUB 2019-2020 Summer Youth Camp.mp4",
+      "title": "MD334 LIONS CLUB 2019-2020 Summer Youth Camp",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=uSNdxLm7Wlk\n元動画ID: uSNdxLm7Wlk\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "unlisted",
+      "made_for_kids": false
+    },
+    {
+      "no": 20,
+      "original_id": "6sJAap_yMmk",
+      "original_url": "https://www.youtube.com/watch?v=6sJAap_yMmk",
+      "source_file": "6sJAap_yMmk - 愛知県青少年英語スピーチコンテスト2018（最優秀賞）.mp4",
+      "title": "愛知県青少年英語スピーチコンテスト2018（最優秀賞）",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=6sJAap_yMmk\n元動画ID: 6sJAap_yMmk\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "unlisted",
+      "made_for_kids": false
+    },
+    {
+      "no": 21,
+      "original_id": "scpBTdGPzdg",
+      "original_url": "https://www.youtube.com/watch?v=scpBTdGPzdg",
+      "source_file": "scpBTdGPzdg - 愛知県青少年英語スピーチコンテスト2017（最優秀賞）.mp4",
+      "title": "愛知県青少年英語スピーチコンテスト2017（最優秀賞）",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=scpBTdGPzdg\n元動画ID: scpBTdGPzdg\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "unlisted",
+      "made_for_kids": false
+    },
+    {
+      "no": 22,
+      "original_id": "cBilw2zSU5w",
+      "original_url": "https://www.youtube.com/watch?v=cBilw2zSU5w",
+      "source_file": "cBilw2zSU5w - HAMATAM Live at Union Jack 稲沢.mp4",
+      "title": "HAMATAM  Live at Union Jack 稲沢",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=cBilw2zSU5w\n元動画ID: cBilw2zSU5w\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    },
+    {
+      "no": 23,
+      "original_id": "G5GpI8dh0oQ",
+      "original_url": "https://www.youtube.com/watch?v=G5GpI8dh0oQ",
+      "source_file": "G5GpI8dh0oQ - Hamatam _ Flow - Depapepe Live @ Khao Yai, Thailand 4.12.10 (Honda Winter Festival).mp4",
+      "title": "Hamatam / Flow - Depapepe Live @ Khao Yai, Thailand 4.12.10 (Honda Winter Festival)",
+      "description": "田村 洸樹（HAMATAM）のギター演奏アーカイブです。\n旧 @hamatam チャンネル終了に伴い、バックアップから再公開しています。\n\n元動画: https://www.youtube.com/watch?v=G5GpI8dh0oQ\n元動画ID: G5GpI8dh0oQ\n",
+      "tags": [
+        "HAMATAM",
+        "はまたむ",
+        "田村洸樹",
+        "ギター",
+        "DEPAPEPE",
+        "アコギ",
+        "ストリートライブ",
+        "アーカイブ"
+      ],
+      "category": "音楽",
+      "category_id": "10",
+      "privacy": "public",
+      "made_for_kids": false
+    }
+  ]
+}
