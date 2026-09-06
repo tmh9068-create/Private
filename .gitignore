@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# YouTube upload secrets / local state
+scripts/hamatam-upload-archive.txt
+scripts/hamatam-upload-manifest.json
+.config/youtube-upload/
+client_secrets.json
+token.json
